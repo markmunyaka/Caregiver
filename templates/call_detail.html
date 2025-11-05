@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Call Details</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="p-2">
+  <div class="container">
+    <h5>Call — {{ call.hospital_name }}</h5>
+    <p><strong>Phone:</strong> {{ call.phone }}</p>
+    <p><strong>Status:</strong> {{ call.status }} &nbsp; <strong>Duration:</strong> {{ call.duration_seconds }}s</p>
+    <p><strong>Summary:</strong> {{ call.summary }}</p>
+
+    {% if call.recording_url %}
+      <p><strong>Recording:</strong></p>
+      <audio controls style="width:100%">
+        <source src="{{ call.recording_url }}" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    {% endif %}
+
+    {% if call.transcript %}
+      <h6>Transcript</h6>
+      <div style="white-space:pre-wrap; background:#f7f7f7; padding:8px; border-radius:6px;">{{ call.transcript }}</div>
+    {% endif %}
+    <br>
+    <a href="/">← Back</a>
+  </div>
+</body>
+</html>
