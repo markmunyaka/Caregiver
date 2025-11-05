@@ -1,0 +1,14 @@
+ðŸ“Š Caregiver Calls Dashboard
+
+Simple mobile-friendly view â€” updated in near-real-time.
+
+Hospitals (priority order)
+
+{% for h in hospitals %} {% endfor %}
+Name	Phone	City	Weight
+{{ h.name }}	{{ h.phone }}	{{ h.city or '-' }}	{{ '%.1f'|format(h.weight or 0) }}
+Recent Calls
+
+{% for c in calls %} {% endfor %}
+Hospital	Phone	Status	Duration	Summary	View
+{{ c.hospital_name }}	{{ c.phone }}	{{ c.status }}	{{ c.duration_seconds }}s
